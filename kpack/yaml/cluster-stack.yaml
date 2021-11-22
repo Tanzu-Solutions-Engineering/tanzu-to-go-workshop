@@ -1,0 +1,10 @@
+apiVersion: kpack.io/v1alpha2
+kind: ClusterStack
+metadata:
+  name: base
+spec:
+  id: "io.buildpacks.stacks.bionic"
+  buildImage:
+    image: "paketobuildpacks/build:base-cnb"
+  runImage:
+    image: "paketobuildpacks/run:base-cnb"
