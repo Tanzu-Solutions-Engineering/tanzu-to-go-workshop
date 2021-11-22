@@ -1,0 +1,15 @@
+apiVersion: kpack.io/v1alpha2
+kind: Image
+metadata:
+  name: webapp-image
+  namespace: kpack
+spec:
+  tag: harbor.tap.amer.end2end.link/kpack/webapp
+  serviceAccountName: kpack-service-account
+  builder:
+    name: builder
+    kind: Builder
+  source:
+    git:
+      url: https://github.com/cpage-pivotal/tanzu-java-web-app
+      revision: main

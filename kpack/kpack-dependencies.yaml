@@ -16,9 +16,9 @@ metadata:
   name: default
 spec:
   sources:
-    - image: gcr.io/paketo-buildpacks/spring-boot
+    - image: gcr.io/paketo-buildpacks/java
+#    - image: gcr.io/paketo-buildpacks/spring-boot
 #    - image: gcr.io/paketo-buildpacks/dotnet-core
-#    - image: gcr.io/paketo-buildpacks/java
 #    - image: gcr.io/paketo-buildpacks/nodejs
 #    - image: gcr.io/paketo-buildpacks/go
 #    - image: gcr.io/paketo-buildpacks/php
@@ -38,13 +38,12 @@ spec:
 
 ---
 apiVersion: kpack.io/v1alpha2
-kind: ClusterBuilder
+kind: Builder
 metadata:
   name: builder
+  namespace: kpack
 spec:
-  serviceAccountRef:
-    name: kpack-service-account
-    namespace: kpack
+  serviceAccountName: kpack-service-account
   tag: harbor.tap.amer.end2end.link/kpack/build
   stack:
     name: base
@@ -54,4 +53,4 @@ spec:
     kind: ClusterStore
   order:
     - group:
-        - id: paketo-buildpacks/spring-boot
+        - id: paketo-buildpacks/java
