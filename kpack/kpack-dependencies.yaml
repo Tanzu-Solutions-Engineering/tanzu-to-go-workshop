@@ -1,0 +1,56 @@
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: kpack-service-account
+  namespace: kpack
+secrets:
+  - name: registry-credentials
+imagePullSecrets:
+  - name: registry-credentials
+
+---
+apiVersion: kpack.io/v1alpha2
+kind: ClusterStore
+metadata:
+  name: default
+spec:
+  sources:
+    - image: gcr.io/paketo-buildpacks/java
+#    - image: gcr.io/paketo-buildpacks/spring-boot
+#    - image: gcr.io/paketo-buildpacks/dotnet-core
+#    - image: gcr.io/paketo-buildpacks/nodejs
+#    - image: gcr.io/paketo-buildpacks/go
+#    - image: gcr.io/paketo-buildpacks/php
+#    - image: gcr.io/paketo-buildpacks/ruby
+
+---
+apiVersion: kpack.io/v1alpha2
+kind: ClusterStack
+metadata:
+  name: base
+spec:
+  id: "io.buildpacks.stacks.bionic"
+  buildImage:
+    image: "paketobuildpacks/build:base-cnb"
+  runImage:
+    image: "paketobuildpacks/run:base-cnb"
+
+---
+apiVersion: kpack.io/v1alpha2
+kind: Builder
+metadata:
+  name: builder
+  namespace: kpack
+spec:
+  serviceAccountName: kpack-service-account
+  tag: harbor.tap.amer.end2end.link/kpack/build
+  stack:
+    name: base
+    kind: ClusterStack
+  store:
+    name: default
+    kind: ClusterStore
+  order:
+    - group:
+        - id: paketo-buildpacks/java
