@@ -28,8 +28,8 @@ Here's the recipe for a delicious, free, 100% open-source, all-natural developme
 
 ## Table of Contents
 
-[1. Install Tanzu Community Edition](1-tce.md)<br>
+[1. Install Tanzu Community Edition](tce/1-tce.md)<br>
 [2. Install kpack](2-kpack.md)<br>
-[3. Install Knative](3-knative.md)<br>
+[3. Install Knative](knative/3-knative.md)<br>
 [4. Install Cartographer](4-cartographer.md)<br>
 [5. Onboard your application](5-application.md)

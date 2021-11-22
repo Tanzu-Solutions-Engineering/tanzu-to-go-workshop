@@ -1,1 +1,0 @@
-# Install Tanzu Community Edition
