@@ -18,4 +18,4 @@ You can verify everything works so far by creating a Knative service:
 
 kn service create helloworld-go --image gcr.io/knative-samples/helloworld-go
 
-When the service is available, you should be able to access it in your browser through the port-forward: http://helloworld-go.default.127-0-0-1.nip.io
+When the service is available, you should be able to access it in your browser through the port-forward: http://helloworld-go.default.127-0-0-1.nip.io:8080
