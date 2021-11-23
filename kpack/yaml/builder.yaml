@@ -1,0 +1,20 @@
+#@ load("@ytt:data", "data")
+apiVersion: kpack.io/v1alpha2
+kind: Builder
+metadata:
+  name: my-builder
+  namespace: default
+spec:
+  serviceAccountName: tutorial-service-account
+  tag: #@ data.values.tbs.builder.tag
+  stack:
+    name: base
+    kind: ClusterStack
+  store:
+    name: default
+    kind: ClusterStore
+  order:
+  - group:
+    - id: paketo-buildpacks/java
+  - group:
+    - id: paketo-buildpacks/nodejs
