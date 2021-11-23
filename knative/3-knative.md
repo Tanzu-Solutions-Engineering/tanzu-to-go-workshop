@@ -6,7 +6,7 @@ First, we will install Contour. For a personal computer install, we set Contour 
 
 Whenever you want to access applications using Contour ingress, you will need a port forward to send localhost traffic to envoy. You can do this with the following command:
 
-```kubectl port-forward svc/envoy 80:80 -n projectcontour```
+```kubectl port-forward svc/envoy 8080:80 -n projectcontour```
 
 Now, we can install Knative. To simplify DNS we will set our Knative DNS Domain to 127-0-0-1.nip.io. This will automatically route requests to localhost, where your port forward will send them to Contour:
 
