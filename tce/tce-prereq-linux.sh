@@ -72,5 +72,15 @@ log "Installing kubectl"
 curl -Lo $DOWNLOADS/kubectl "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
 sudo install -o root -g root -m 0755 $DOWNLOADS/kubectl /usr/local/bin/kubectl
 
+log "Installing kn"
+
+curl -Lo $DOWNLOADS/kn https://github.com/knative/client/releases/latest/download/kn-linux-amd64
+sudo install -o root -g root -m 0755 $DOWNLOADS/kn /usr/local/bin/kn
+
+log "Installing kp"
+
+curl -Lo $DOWNLOADS/kp https://github.com/vmware-tanzu/kpack-cli/releases/download/v0.4.1/kp-linux-0.4.1
+sudo install -o root -g root -m 0755 $DOWNLOADS/kp /usr/local/bin/kp
+
 
 log "Done"
