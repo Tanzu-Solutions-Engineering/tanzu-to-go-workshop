@@ -1,12 +1,13 @@
 #@ load("@ytt:data", "data")
+
 apiVersion: kpack.io/v1alpha2
 kind: Builder
 metadata:
-  name: my-builder
+  name: builder
   namespace: default
 spec:
-  serviceAccountName: tutorial-service-account
-  tag: #@ data.values.tbs.builder.tag
+  serviceAccountName: kpack-service-account
+  tag: #@ data.values.kpack.builder.tag
   stack:
     name: base
     kind: ClusterStack
@@ -14,7 +15,7 @@ spec:
     name: default
     kind: ClusterStore
   order:
+#@ for language in data.values.kpack.languages:
   - group:
-    - id: paketo-buildpacks/java
-  - group:
-    - id: paketo-buildpacks/nodejs
+    - id: #@ "paketo-buildpacks/{}".format(language)
+#@ end

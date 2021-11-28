@@ -1,17 +1,15 @@
 #!/bin/bash -x
-TBS_VERSION=$(yq eval '.tbs.version' tbs-config.yaml)
-REGISTORY_USERNAME=$(yq eval '.tbs.registry.username' tbs-config.yaml)
-REGISTORY_PASSWORD=$(yq eval '.tbs.registry.password' tbs-config.yaml)
-REGISTORY_URL=$(yq eval '.tbs.registry.url' tbs-config.yaml)
+KPACK_VERSION=$(yq eval '.kpack.version' kpack-config.yaml)
+REGISTRY_USERNAME=$(yq eval '.kpack.registry.username' kpack-config.yaml)
+REGISTRY_PASSWORD=$(yq eval '.kpack.registry.password' kpack-config.yaml)
+REGISTRY_URL=$(yq eval '.kpack.registry.url' kpack-config.yaml)
 
-
-wget https://github.com/pivotal/kpack/releases/download/v${TBS_VERSION}/release-${TBS_VERSION}.yaml
-kapp deploy -y -a tbs -f release-${TBS_VERSION}.yaml
-kubectl create secret docker-registry tutorial-registry-credentials \
+kapp deploy -y -a kpack -f https://github.com/pivotal/kpack/releases/download/v${KPACK_VERSION}/release-${KPACK_VERSION}.yaml -n default
+kubectl create secret docker-registry registry-credentials \
     --docker-username=${REGISTRY_USERNAME} \
     --docker-password=${REGISTRY_PASSWORD} \
     --docker-server=${REGISTRY_URL} \
     --namespace default
 
-ytt -f tbs-config.yaml  -f yaml | kapp deploy -y -a tbs-meta -f-
+ytt -f kpack-config.yaml -f yaml --ignore-unknown-comments | kapp deploy -y -n default -a kpack-meta -f-
 

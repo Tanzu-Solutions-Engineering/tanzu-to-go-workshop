@@ -1,8 +1,21 @@
+#@ load("@ytt:data", "data")
+
+#@ buildpack_versions = {
+#@   "dotnet-core": "0.9.0",
+#@   "go": "0.12.0",
+#@   "java": "5.21.1",
+#@   "nodejs": "0.11.1",
+#@   "php": "0.6.1",
+#@   "ruby": "0.9.1",
+#@ }
+
 apiVersion: kpack.io/v1alpha2
 kind: ClusterStore
 metadata:
   name: default
 spec:
   sources:
-  - image: gcr.io/paketo-buildpacks/java
-  - image: gcr.io/paketo-buildpacks/nodejs
+#@ for language in data.values.kpack.languages:
+  - image: #@ "gcr.io/paketo-buildpacks/{}:{}".format(language,buildpack_versions[language])
+#@ end
+
