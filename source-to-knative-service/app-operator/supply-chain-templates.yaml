@@ -118,14 +118,9 @@ spec:
     spec:
       tag: $(params.image_prefix)$$(workload.metadata.name)$
       serviceAccountName: service-account
-      builder:
-        kind: ClusterBuilder
-        name: go-builder
       source:
         blob:
           url: $(sources.source.url)$
-      build:
-        env: $(workload.spec.build.env)$
 
 ---
 #

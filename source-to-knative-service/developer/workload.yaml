@@ -27,7 +27,3 @@ spec:
       url: https://github.com/jeffellin/tanzu-java-web-app
       ref:
         branch: main
-  build:
-    env:
-      - name: CGO_ENABLED
-        value: "0"
