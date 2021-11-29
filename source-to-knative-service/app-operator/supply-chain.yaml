@@ -43,3 +43,10 @@ spec:
       sources:
         - resource: source-provider
           name: source
+    - name: deployer
+      templateRef:
+        kind: ClusterTemplate
+        name: app-deploy
+      images:
+        - resource: image-builder
+          name: image

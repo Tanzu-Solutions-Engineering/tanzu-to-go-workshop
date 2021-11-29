@@ -117,7 +117,10 @@ spec:
       name: $(workload.metadata.name)$
     spec:
       tag: $(params.image_prefix)$$(workload.metadata.name)$
-      serviceAccountName: service-account
+      serviceAccountName: default
+      builder:
+       kind: Builder
+       name: builder
       source:
         blob:
           url: $(sources.source.url)$
@@ -146,7 +149,7 @@ spec:
     metadata:
       name: $(workload.metadata.name)$
     spec:
-      serviceAccountName: service-account
+      serviceAccountName: default
       fetch:
         - inline:
             paths:
@@ -184,7 +187,7 @@ spec:
                       annotations:
                         autoscaling.knative.dev/minScale: "1"
                     spec:
-                      serviceAccountName: service-account
+                      serviceAccountName: default
                       containers:
                         - name: workload
                           image: $(images.image.image)$

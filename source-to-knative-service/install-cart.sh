@@ -4,6 +4,19 @@ SECRETGEN_CONTROLLER_VERSION=$(yq eval '.cartographer.secretgen_controller_versi
 CARTOGRAPHER_VERSION=$(yq eval '.cartographer.cartographer_version' cartographer-config.yaml)
 SOURCE_CONTROLLER_VERSION=$(yq eval '.cartographer.source_controller_version' cartographer-config.yaml)
 
+DOCKER_REPO=$(yq eval '.registry.server' cartographer-config.yaml)
+DOCKER_USERNAME=$(yq eval '.registry.username' cartographer-config.yaml)
+DOCKER_PASSWORD=$(yq eval '.registry.password' cartographer-config.yaml)
+
+
+
+kubectl create secret -n cartographer-system \
+  docker-registry private-registry-credentials \
+  --docker-server=$DOCKER_REPO \
+  --docker-username=$DOCKER_USERNAME \
+  --docker-password=$DOCKER_PASSWORD
+
+
 # Install SecretGen Controller
 
 kapp deploy --yes -a secretgen-controller \
@@ -27,6 +40,10 @@ kubectl create namespace gitops-toolkit --dry-run=client -o yaml | kubectl apply
 kubectl create clusterrolebinding gitops-toolkit-admin \
   --clusterrole=cluster-admin \
   --serviceaccount=gitops-toolkit:default --dry-run=client -o yaml | kubectl apply -f -
+
+kubectl create clusterrolebinding default-admin \
+  --clusterrole=cluster-admin \
+  --serviceaccount=defaut:default --dry-run=client -o yaml | kubectl apply -f -
 
 #  Install source controller,  the source part of the supply chain
 
