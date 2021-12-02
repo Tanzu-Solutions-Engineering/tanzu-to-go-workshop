@@ -21,8 +21,4 @@ You are ready to go when you see this message: <br>
 
 Once the cluster is available, we will install the Tanzu Community Edition package repository. This will give us easy access to perform a managed install of software dependencies onto the cluster:
 
-```
-tanzu package repository add tce-repo \
---url projects.registry.vmware.com/tce/main:0.9.1 \
---namespace tanzu-package-repo-global
-```
+`tanzu package repository add tce-repo --url projects.registry.vmware.com/tce/main:0.9.1 --namespace tanzu-package-repo-global`
