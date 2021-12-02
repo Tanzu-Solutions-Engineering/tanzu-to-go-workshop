@@ -1,4 +1,5 @@
 # Install Knative
+Before we get started, we need to install the Knative CLI.  Follow the instructions at https://knative.dev/docs/install/client/install-kn/.
 
 First, we will install Contour. For a personal computer install, we set Contour to use a ClusterIP endpoint because there will not be a LoadBalancer available:
 
