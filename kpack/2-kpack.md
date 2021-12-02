@@ -1,6 +1,6 @@
 # Install kpack
 
-Make sure you have cloned this repo, navigate to this (knative) directory, and edit the [kpack-config.yaml](kpack-config.yaml) to customize it for your install.
+Make sure you have cloned this repo, navigate to this (kpack) directory, and edit the [kpack-config.yaml](kpack-config.yaml) to customize it for your install.
 
 Run the installer script:
 ```./install-kpack.sh```
