@@ -1,0 +1,44 @@
+apiVersion: carto.run/v1alpha1
+kind: Workload
+metadata:
+  annotations:
+    kapp.k14s.io/identity: v1;default/carto.run/Workload/dev;carto.run/v1alpha1
+    kapp.k14s.io/original: '{"apiVersion":"carto.run/v1alpha1","kind":"Workload","metadata":{"labels":{"app.tanzu.vmware.com/workload-type":"web","kapp.k14s.io/app":"1638219139243605759","kapp.k14s.io/association":"v1.6967be34cf2e1fd16da0f3241160f9d3"},"name":"dev","namespace":"default"},"spec":{"serviceAccountName":"default","source":{"git":{"ref":{"branch":"main"},"url":"https://github.com/jeffellin/tanzu-java-web-app"}}}}'
+    kapp.k14s.io/original-diff-md5: 54019288411b14a52c87515a3952ff88
+  creationTimestamp: "2021-11-29T21:27:02Z"
+  generation: 1
+  labels:
+    app.tanzu.vmware.com/workload-type: web
+    kapp.k14s.io/app: "1638219139243605759"
+    kapp.k14s.io/association: v1.6967be34cf2e1fd16da0f3241160f9d3
+  name: dev
+  namespace: default
+  resourceVersion: "280635"
+  uid: 428d9f81-955a-48d3-a521-791648bc601a
+spec:
+  source:
+    git:
+      ref:
+        branch: main
+      url: https://github.com/jeffellin/tanzu-java-web-app
+status:
+  conditions:
+  - lastTransitionTime: "2021-11-29T21:27:03Z"
+    message: ""
+    reason: Ready
+    status: "True"
+    type: SupplyChainReady
+  - lastTransitionTime: "2021-11-29T21:29:21Z"
+    message: ""
+    reason: ResourceSubmissionComplete
+    status: "True"
+    type: ResourcesSubmitted
+  - lastTransitionTime: "2021-11-29T21:29:21Z"
+    message: ""
+    reason: Ready
+    status: "True"
+    type: Ready
+  observedGeneration: 1
+  supplyChainRef:
+    kind: ClusterSupplyChain
+    name: supply-chain
