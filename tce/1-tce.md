@@ -8,13 +8,16 @@ To install TCE on your personal computer, follow the instructions here:
 
 https://github.com/vmware-tanzu/community-edition/blob/standalone-overhaul/cli/cmd/plugin/standalone-cluster/README.md
 
-NOTE: If you are installing via WSL2 on Windows, you need to grab the Linux Binaries, but make sure to install using the Calico CNI as the default CNI (Antrea) is not yet supported on Windows.  `tanzu standalone create hello --cni=calico`
+NOTE: If you are installing via WSL2 on Windows, you need to grab the Linux Binaries.
 
 We recommend allocating 12GB of RAM and 8 CPUs for your cluster.
 
 Once the standalone plugin has been installed for your Tanzu CLI, you can create the cluster:
 
-`tanzu standalone create local-tce`
+* Windows Powershell or WSL2
+  * `tanzu standalone create hello --cni=calico`
+* Mac or Linux
+  * `tanzu standalone create local-tce`
 
 You are ready to go when you see this message: <br>
 ✅ Cluster created
