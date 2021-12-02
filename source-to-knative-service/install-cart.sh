@@ -43,7 +43,7 @@ kubectl create clusterrolebinding gitops-toolkit-admin \
 
 kubectl create clusterrolebinding default-admin \
   --clusterrole=cluster-admin \
-  --serviceaccount=defaut:default --dry-run=client -o yaml | kubectl apply -f -
+  --serviceaccount=default:default --dry-run=client -o yaml | kubectl apply -f -
 
 #  Install source controller,  the source part of the supply chain
 

@@ -17,10 +17,10 @@
 cartographer:
   cert_manager_version: 1.5.3
   secretgen_controller_version: 0.6.0
-  cartographer_version: v0.0.7
+  cartographer_version: v0.0.8-rc.7
   source_controller_version: 0.17.0
-service_account_name: workload-service-account
-image_prefix: jeffellin/demo-
+service_account_name: default
+image_prefix: ellinj/demo-
 registry:
   server: https://index.docker.io/v1/
   username:  
