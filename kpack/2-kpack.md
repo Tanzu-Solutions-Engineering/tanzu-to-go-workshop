@@ -1,6 +1,9 @@
 # Install kpack
 
-The install process for kpack requires Carvel tools to be install
+Before installing kpack, you need to install the some additional utilities:
+* [yq](https://github.com/mikefarah/yq)
+* [ytt](https://carvel.dev/ytt/docs/latest/install/)
+* [kapp](https://carvel.dev/kapp/docs/latest/install/)
 
 Make sure you have cloned this repo, navigate to this (kpack) directory.
 ```
