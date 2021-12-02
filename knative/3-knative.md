@@ -2,7 +2,10 @@
 
 First, we will install Contour. For a personal computer install, we set Contour to use a ClusterIP endpoint because there will not be a LoadBalancer available:
 
-```tanzu package install contour --package-name contour.community.tanzu.vmware.com --version 1.18.1 -f values-contour.yaml```
+```
+cd ../knative
+tanzu package install contour --package-name contour.community.tanzu.vmware.com --version 1.18.1 -f values-contour.yaml
+```
 
 Whenever you want to access applications using Contour ingress, you will need a port forward to send localhost traffic to envoy. You can do this with the following command:
 
