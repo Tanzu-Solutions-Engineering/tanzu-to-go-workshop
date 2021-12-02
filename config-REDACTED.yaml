@@ -43,3 +43,10 @@ kpack:
   # - ruby
   # - php
   languages: [java]  
+# knative config
+envoy:
+  service:
+    type: ClusterIP
+domain:
+  name: 127-0-0-1.nip.io
+  type: real
