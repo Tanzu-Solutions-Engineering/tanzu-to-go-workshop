@@ -7,7 +7,7 @@ cd ../knative
 tanzu package install contour --package-name contour.community.tanzu.vmware.com --version 1.18.1 -f values-contour.yaml
 ```
 
-Whenever you want to access applications using Contour ingress, you will need a port forward to send localhost traffic to envoy. You can do this with the following command:
+Whenever you want to access applications using Contour ingress, you will need a port forward to send localhost traffic to envoy. Execute the following command in a separate terminal session or tab:
 
 ```kubectl port-forward svc/envoy 8080:80 -n projectcontour```
 
