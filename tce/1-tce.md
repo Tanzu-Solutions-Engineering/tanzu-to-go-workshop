@@ -8,7 +8,12 @@ To install TCE on your personal computer, follow the instructions here:
 
 https://github.com/vmware-tanzu/community-edition/blob/standalone-overhaul/cli/cmd/plugin/standalone-cluster/README.md
 
-NOTE: If you are installing via WSL2 on Windows, you need to grab the Linux Binaries.
+---
+
+**NOTE**
+If you are installing via WSL2 on Windows, you need to grab the Linux Binaries.
+
+---
 
 We recommend allocating 12GB of RAM and 8 CPUs for your cluster.
 
