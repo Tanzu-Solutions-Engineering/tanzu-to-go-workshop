@@ -1,6 +1,11 @@
 # Install kpack
 
-Make sure you have cloned this repo, navigate to this (kpack) directory, and edit the [kpack-config.yaml](kpack-config.yaml) to customize it for your install.
+Make sure you have cloned this repo, navigate to this (kpack) directory.
+```
+git clone https://github.com/Tanzu-Solutions-Engineering/tanzu-to-go-workshop
+cd tanzu-to-go-workshop/kpack
+```
+Edit the kpack-config.yaml to customize it for your install.
 
 Run the installer script:
 ```./install-kpack.sh```
