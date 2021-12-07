@@ -14,14 +14,39 @@
 
 #@data/values
 ---
+registry:
+  server: https://index.docker.io/v1/
+  username: 
+  password: 
+
+service_account_name: default
+image_prefix: ellinj/demo-
+
 cartographer:
   cert_manager_version: 1.5.3
   secretgen_controller_version: 0.6.0
   cartographer_version: v0.0.8-rc.7
   source_controller_version: 0.17.0
-service_account_name: default
-image_prefix: ellinj/demo-
-registry:
-  server: https://index.docker.io/v1/
-  username:  
-  password: 
+
+kpack:
+  version: 0.4.3
+  # credentials for the container registry you'll be using to store images
+  builder:
+    # path to the container repository where kpack build artifacts are stored
+    tag: ellinj/builder
+  # A comma-separated list of languages e.g. [java,nodejs] that will be supported for development
+  # Allowed values are:
+  # - java
+  # - nodejs
+  # - dotnet-core
+  # - go
+  # - ruby
+  # - php
+  languages: [java]  
+# knative config
+envoy:
+  service:
+    type: ClusterIP
+domain:
+  name: 127-0-0-1.nip.io
+  type: real
