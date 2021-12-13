@@ -54,5 +54,5 @@ kapp deploy --yes -a gitops-toolkit \
 
 ## install sample supply chain 
 
-ytt --ignore-unknown-comments -f source-to-knative-service  | kapp deploy -y -a source-to-knative-service -f-
+ytt --data-values-file config.yaml --ignore-unknown-comments -f source-to-knative-service  | kapp deploy -y -a source-to-knative-service -f-
 

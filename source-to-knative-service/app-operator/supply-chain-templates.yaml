@@ -117,7 +117,7 @@ spec:
       name: $(workload.metadata.name)$
     spec:
       tag: $(params.image_prefix)$$(workload.metadata.name)$
-      serviceAccountName: default
+      serviceAccountName: kpack-service-account
       builder:
        kind: Builder
        name: builder

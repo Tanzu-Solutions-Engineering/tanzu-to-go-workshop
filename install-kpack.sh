@@ -11,5 +11,5 @@ kubectl create secret docker-registry registry-credentials \
     --docker-server=${REGISTRY_URL} \
     --namespace default
 
-ytt -f kpack/kpack-config.yaml -f yaml --ignore-unknown-comments | kapp deploy -y -n default -a kpack-meta -f-
+ytt --data-values-file config.yaml -f kpack/yaml --ignore-unknown-comments | kapp deploy -y -n default -a kpack-meta -f-
 
