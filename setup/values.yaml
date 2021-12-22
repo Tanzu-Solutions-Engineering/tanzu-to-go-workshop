@@ -1,0 +1,11 @@
+##################################################
+##### vendir configuration
+##################################################
+
+vendir:
+  # For installation of CLI binaries
+  host:
+    # os: darwin, linux, windows (default specified in vendir.yml)
+    os: ""
+    # arch: amd64, etc (default specified in vendir.yml)
+    arch: ""

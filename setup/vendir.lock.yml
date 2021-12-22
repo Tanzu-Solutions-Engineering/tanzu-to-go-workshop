@@ -1,0 +1,52 @@
+apiVersion: vendir.k14s.io/v1alpha1
+directories:
+- contents:
+  - githubRelease:
+      url: https://api.github.com/repos/jetstack/cert-manager/releases/48370396
+    path: .
+  path: vendir/cert-manager
+- contents:
+  - githubRelease:
+      url: https://api.github.com/repos/vmware-tanzu/carvel-secretgen-controller/releases/52280448
+    path: .
+  path: vendir/secretgen-controller
+- contents:
+  - githubRelease:
+      url: https://api.github.com/repos/vmware-tanzu/cartographer/releases/54277900
+    path: .
+  path: vendir/cartographer
+- contents:
+  - githubRelease:
+      url: https://api.github.com/repos/fluxcd/flux2/releases/54991712
+    path: .
+  path: vendir/flux2
+- contents:
+  - githubRelease:
+      url: https://api.github.com/repos/pivotal/kpack/releases/53942007
+    path: .
+  path: vendir/kpack
+- contents:
+  - githubRelease:
+      url: https://api.github.com/repos/mikefarah/yq/releases/54620497
+    path: yq
+  - githubRelease:
+      url: https://api.github.com/repos/vmware-tanzu/carvel-ytt/releases/53677754
+    path: ytt
+  - githubRelease:
+      url: https://api.github.com/repos/vmware-tanzu/carvel-kapp/releases/54717304
+    path: kapp
+  - githubRelease:
+      url: https://api.github.com/repos/knative/client/releases/55277647
+    path: kn
+  - githubRelease:
+      url: https://api.github.com/repos/vmware-tanzu/kpack-cli/releases/52946265
+    path: kp
+  - http: {}
+    path: kubectl
+  path: vendir/binaries
+- contents:
+  - githubRelease:
+      url: https://api.github.com/repos/vmware-tanzu/community-edition/releases/50492001
+    path: .
+  path: vendir/binaries-tce
+kind: LockConfig
