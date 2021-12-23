@@ -51,6 +51,7 @@ rules:
       - taskruns
       - deployments
       - services
+      - configmaps
       - ingresses
     verbs:
       - get
