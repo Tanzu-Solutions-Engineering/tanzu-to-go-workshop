@@ -53,6 +53,7 @@ rules:
       - services
       - ingresses
     verbs:
+      - get
       - list
       - create
       - update
