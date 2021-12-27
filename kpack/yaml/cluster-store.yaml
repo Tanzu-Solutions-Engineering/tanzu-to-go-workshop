@@ -1,12 +1,12 @@
 #@ load("@ytt:data", "data")
 
 #@ buildpack_versions = {
-#@   "dotnet-core": "0.9.0",
-#@   "go": "0.12.0",
-#@   "java": "5.21.1",
-#@   "nodejs": "0.11.1",
-#@   "php": "0.6.1",
-#@   "ruby": "0.9.1",
+#@   "dotnet-core": "latest",
+#@   "go": "latest",
+#@   "java": "latest",
+#@   "nodejs": "latest",
+#@   "php": "latest",
+#@   "ruby": "latest",
 #@ }
 
 apiVersion: kpack.io/v1alpha2
