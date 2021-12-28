@@ -1,0 +1,27 @@
+##################################################
+##### vendir configuration
+##################################################
+
+# Vendir configuration
+vendir:
+  # getLatest overrides declared versions (disable using getLatest: "")
+  getLatest: ""
+  versions:
+    cert-manager: 1.5.3
+    secretgen-controller: 0.6.0
+    cartographer: 0.0.8-rc.7
+    flux2: 0.24.1
+    kpack: 0.4.3
+    yq: 4.16.1
+    ytt: 0.38.0
+    kapp: 0.43.0
+    kn: 1.1.0
+    tce: 0.9.1
+    kp: 0.4.2
+    kubectl: 1.23.1
+  # For installation of CLI binaries
+  host:
+    # os: darwin, linux, windows (default specified in vendir.yml)
+    os: ""
+    # arch: amd64, etc (default specified in vendir.yml)
+    arch: ""

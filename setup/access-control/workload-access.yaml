@@ -1,0 +1,94 @@
+#@ load("@ytt:data", "data")
+
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: workload-service-account
+  namespace: #@ data.values.workload.namespace
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: workload-role-binding
+  namespace: #@ data.values.workload.namespace
+roleRef:
+  kind: ClusterRole
+  name: workload-cluster-role-namespaced-resources
+  apiGroup: rbac.authorization.k8s.io
+subjects:
+  - kind: ServiceAccount
+    name: workload-service-account
+    apiGroup: ""
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: workload-cluster-role-namespaced-resources
+rules:
+  - apiGroups:
+      - source.toolkit.fluxcd.io
+      - image.toolkit.fluxcd.io
+      - kpack.io
+      - kapp.k14s.io/v1alpha1
+      - kappctrl.k14s.io
+      - serving.knative.dev/v1
+      - carto.run
+      - tekton.dev
+      - apps
+      - ""
+      - networking.k8s.io
+    resources:
+      - gitrepositories
+      - imagerepositories
+      - imagepolicies
+      - images
+      - configs
+      - apps
+      - services
+      - runnables
+      - tasks
+      - taskruns
+      - deployments
+      - services
+      - configmaps
+      - ingresses
+    verbs:
+      - get
+      - list
+      - create
+      - update
+      - delete
+      - patch
+      - watch
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: workload-cluster-role-cluster-resources
+rules:
+  - apiGroups:
+      - tekton.dev
+    resources:
+      - clustertasks
+    verbs:
+      - list
+      - create
+      - update
+      - delete
+      - patch
+      - watch
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: workload-cluster-role-binding
+roleRef:
+  kind: ClusterRole
+  name: workload-cluster-role-cluster-resources
+  apiGroup: rbac.authorization.k8s.io
+subjects:
+  - kind: ServiceAccount
+    name: workload-service-account
+    apiGroup: ""
+    namespace: #@ data.values.workload.namespace

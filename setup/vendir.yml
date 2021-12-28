@@ -1,0 +1,147 @@
+#@ load("@ytt:data", "data")
+#@ load("@ytt:struct", "struct")
+
+#@ def getFixedVersion(key):
+#@   versions = struct.decode(data.values.vendir.versions)
+#@   return versions[key]
+#@ end
+
+#! For more info on setting semver constraints, see:
+#!   https://carvel.dev/vendir/docs/latest/versions
+#!   https://github.com/blang/semver#ranges
+#@ def getVersion(key):
+#@   if data.values.vendir.getLatest:
+#@     return ">0.0.0"
+#@   else:
+#@     return getFixedVersion(key)
+#@   end
+#@ end
+
+#@ os = data.values.vendir.host.os or "darwin"
+#@ arch = data.values.vendir.host.arch or "amd64"
+---
+apiVersion: vendir.k14s.io/v1alpha1
+kind: Config
+minimumRequiredVersion: 0.8.0
+directories:
+  #! Product release files
+  - path: vendir/cert-manager
+    contents:
+    - path: .
+      githubRelease:
+        slug: jetstack/cert-manager
+        tagSelection:
+          semver:
+            constraints: #@ getVersion("cert-manager")
+        assetNames: [ "cert-manager.yaml" ]
+        disableAutoChecksumValidation: true
+  - path: vendir/secretgen-controller
+    contents:
+    - path: .
+      githubRelease:
+        slug: vmware-tanzu/carvel-secretgen-controller
+        tagSelection:
+          semver:
+            constraints: #@ getVersion("secretgen-controller")
+        assetNames: ["release.yml"]
+        disableAutoChecksumValidation: true
+  - path: vendir/cartographer
+    contents:
+    - path: .
+      githubRelease:
+        slug: vmware-tanzu/cartographer
+        tagSelection:
+          semver:
+            constraints: #@ getVersion("cartographer")
+            prereleases:
+              identifiers: [ "rc" ]
+        assetNames: ["cartographer.yaml"]
+        disableAutoChecksumValidation: true
+  - path: vendir/flux2
+    contents:
+    - path: .
+      githubRelease:
+        slug: fluxcd/flux2
+        tagSelection:
+          semver:
+            constraints: #@ getVersion("flux2")
+        assetNames: ["install.yaml"]
+        disableAutoChecksumValidation: true
+  - path: vendir/kpack
+    contents:
+    - path: .
+      githubRelease:
+        slug: pivotal/kpack
+        tagSelection:
+          semver:
+            constraints: #@ getVersion("kpack")
+        assetNames:
+          - #@ "release-*.yaml"
+        disableAutoChecksumValidation: true
+  #! Binaries
+  - path: vendir/binaries
+    contents:
+    - path: yq
+      githubRelease:
+        slug: mikefarah/yq
+        tagSelection:
+          semver:
+            constraints: #@ getVersion("yq")
+        assetNames:
+        - #@ "yq_" + os + "_" + arch
+        disableAutoChecksumValidation: true
+    - path: ytt
+      githubRelease:
+        slug: vmware-tanzu/carvel-ytt
+        tagSelection:
+          semver:
+            constraints: #@ getVersion("ytt")
+        assetNames:
+          - #@ "ytt-" + os + "-" + arch
+        disableAutoChecksumValidation: true
+    - path: kapp
+      githubRelease:
+        slug: vmware-tanzu/carvel-kapp
+        tagSelection:
+          semver:
+            constraints: #@ getVersion("kapp")
+        assetNames:
+        - #@ "kapp-" + os + "-" + arch
+        disableAutoChecksumValidation: true
+    - path: kn
+      githubRelease:
+        slug: knative/client
+        #@ if data.values.vendir.getLatest:
+        latest: true
+        #@ else:
+        tag: #@ "knative-v" + getVersion("kn")
+        #@ end
+        assetNames:
+        - #@ "kn-" + os + "-" + arch
+        disableAutoChecksumValidation: true
+    - path: kp
+      githubRelease:
+        slug: vmware-tanzu/kpack-cli
+        tagSelection:
+          semver:
+            constraints: #@ getVersion("kp")
+        assetNames:
+          - #@ "kp-" + os + "-*"
+        disableAutoChecksumValidation: true
+    - path: kubectl
+      http:
+        url: #@ "https://dl.k8s.io/release/v" + getFixedVersion("kubectl") + "/bin/" + os + "/" + arch + "/kubectl"
+  #! TCE
+  - path: vendir/binaries-tce
+    contents:
+    - path: .
+      githubRelease:
+        slug: vmware-tanzu/community-edition
+        tagSelection:
+          semver:
+            constraints: #@ getVersion("tce")
+        assetNames:
+          - #@ "tce-" + os + "-" + arch + "-v*.tar.gz"
+        disableAutoChecksumValidation: true
+#!        unpackArchive:
+#!          path: #@ "tce-" + os + "-" + arch + "-v*.tar.gz"
