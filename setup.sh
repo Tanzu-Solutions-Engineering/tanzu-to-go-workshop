@@ -15,9 +15,11 @@ ytt -f setup/vendir.yml \
 
 # Make binaries executable and put them in the PATH
 mkdir -p bin
-find setup/vendir/binaries -type f -exec cp {} bin \;
-for f in bin/*; do newf=$(basename "$f") && mv "$f" bin/"${newf%%-*}"; done
-for f in bin/*; do newf=$(basename "$f") && mv "$f" bin/"${newf%%_*}"; done
+cp setup/vendir/binaries/kn/kn* bin/kn
+cp setup/vendir/binaries/kp/kp* bin/kp
+cp setup/vendir/binaries/yq/yq* bin/yq
+cp setup/vendir/binaries/kubectl/kubectl bin/kubectl
+
 chmod +x bin/*
 BINDIR="${PWD}"/bin
 PATH="${BINDIR}":"${PATH}"
