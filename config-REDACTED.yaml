@@ -21,14 +21,14 @@ registry:
 service_account_name: default
 image_prefix: ellinj/demo-
 
-#cartographer:
-#  cert_manager_version: 1.5.3
-#  secretgen_controller_version: 0.6.0
-#  cartographer_version: v0.0.8-rc.7
-#  source_controller_version: 0.17.0
+cartographer:
+  cert_manager_version: 1.5.3
+  secretgen_controller_version: 0.6.0
+  cartographer_version: v0.1.0-rc.1
+  source_controller_version: 0.19.2
 
 kpack:
-#  version: 0.4.3
+  version: 0.5.0
   # credentials for the container registry you'll be using to store images
   builder:
     # path to the container repository where kpack build artifacts are stored
