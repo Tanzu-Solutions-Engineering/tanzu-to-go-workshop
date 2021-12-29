@@ -90,24 +90,6 @@ directories:
         assetNames:
         - #@ "yq_" + os + "_" + arch
         disableAutoChecksumValidation: true
-    - path: ytt
-      githubRelease:
-        slug: vmware-tanzu/carvel-ytt
-        tagSelection:
-          semver:
-            constraints: #@ getVersion("ytt")
-        assetNames:
-          - #@ "ytt-" + os + "-" + arch
-        disableAutoChecksumValidation: true
-    - path: kapp
-      githubRelease:
-        slug: vmware-tanzu/carvel-kapp
-        tagSelection:
-          semver:
-            constraints: #@ getVersion("kapp")
-        assetNames:
-        - #@ "kapp-" + os + "-" + arch
-        disableAutoChecksumValidation: true
     - path: kn
       githubRelease:
         slug: knative/client
@@ -131,17 +113,27 @@ directories:
     - path: kubectl
       http:
         url: #@ "https://dl.k8s.io/release/v" + getFixedVersion("kubectl") + "/bin/" + os + "/" + arch + "/kubectl"
+    - path: standalone
+      http:
+        #@ if os == "darwin":
+        url: #@ "https://storage.googleapis.com/tce-tanzu-cli-plugins/build-tools/standalone/mac/tanzu-standalone"
+        #@ else if os == "linux":
+        url: #@ "https://storage.googleapis.com/tce-tanzu-cli-plugins/build-tools/standalone/linux/tanzu-standalone"
+        #@ else:
+        url: #@ "https://storage.googleapis.com/tce-tanzu-cli-plugins/build-tools/standalone/windows/tanzu-standalone.exe"
+        #@ end
+
   #! TCE
-  - path: vendir/binaries-tce
-    contents:
-    - path: .
-      githubRelease:
-        slug: vmware-tanzu/community-edition
-        tagSelection:
-          semver:
-            constraints: #@ getVersion("tce")
-        assetNames:
-          - #@ "tce-" + os + "-" + arch + "-v*.tar.gz"
-        disableAutoChecksumValidation: true
+#!  - path: vendir/binaries-tce
+#!    contents:
+#!    - path: .
+#!      githubRelease:
+#!        slug: vmware-tanzu/community-edition
+#!        tagSelection:
+#!          semver:
+#!            constraints: #@ getVersion("tce")
+#!        assetNames:
+#!          - #@ "tce-" + os + "-" + arch + "-v*.tar.gz"
+#!        disableAutoChecksumValidation: true
 #!        unpackArchive:
 #!          path: #@ "tce-" + os + "-" + arch + "-v*.tar.gz"

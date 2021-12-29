@@ -1,32 +1,75 @@
 # Install Tanzu Community Edition
 
-Follow the instructions for installing the prereqs:
+Use your system's package manager to install Tanzu Community Edition:
 
-https://tanzucommunityedition.io/docs/latest/cli-installation/
+**Mac/Linux:**
+```
+brew install vmware-tanzu/tanzu/tanzu-community-edition
+```
 
-To install TCE on your personal computer, follow the instructions here: 
+When the brew install completes, it will give you the location of a post-install script to run: `{HOMEBREW-INSTALL-LOCATION}/configure-tce.sh`. Execute that script to complete the install
 
-https://github.com/vmware-tanzu/community-edition/blob/standalone-overhaul/cli/cmd/plugin/standalone-cluster/README.md
+**Windows:**
+
+```
+choco install tanzu-community-edition
+```
+
+The `tanzu` command will be added to your `$PATH` variable automatically by Chocolatey.
+
+___
+
+### Install standalone plugin
+
+Execute the following commands to install the plugin for creating local clusters:
+
+**Mac:**
+```
+chmod +x ./setup/vendir/binaries/standalone/tanzu-standalone
+cp -v ./setup/vendir/binaries/standalone/tanzu-standalone ~/Library/Application\ Support/tanzu-cli/tanzu-plugin-standalone
+rm -rfv ~/.cache/tanzu
+```
+
+**Linux:**
+```
+chmod +x ./setup/vendir/binaries/standalone/tanzu-standalone
+cp -v ./setup/vendir/binaries/standalone/tanzu-standalone ~/.local/share/tanzu-cli/tanzu-plugin-standalone
+rm -rfv ~/.cache/tanzu
+```
+
+**Windows:**
+```
+cp -v ./setup/vendir/binaries/standalone/tanzu-standalone.exe ${env:localappdata}\tanzu-cli\tanzu-plugin-standalone.exe
+rmdir ${env:homepath}\.cache\tanzu
+```
 
 ---
-
 **NOTE**
 If you are installing via WSL2 on Windows, you need to grab the Linux Binaries.
-
 ---
 
-We recommend allocating 12GB of RAM and 8 CPUs for your cluster.
+### Create your Kubernetes Cluster
 
-Once the standalone plugin has been installed for your Tanzu CLI, you can create the cluster:
+Tanzu Community Edition allows you to create a local Kubernetes cluster that runs inside Docker, and supports easy installation of third-party [packages](https://tanzucommunityedition.io/packages/) to customize your environment.
 
-* Windows Powershell or WSL2
-  * `tanzu standalone create hello --cni=calico`
-* Mac or Linux
-  * `tanzu standalone create local-tce`
+We recommend allocating 12GB of RAM and 8 CPUs to Docker, for your cluster. Let's create a cluster on your local system, and call it `tce`.
+
+**Mac or Linux**
+```
+tanzu standalone create tce
+```
+
+**Windows Powershell or WSL2:**
+```
+tanzu standalone create tce --cni=calico
+```
 
 You are ready to go when you see this message: <br>
 ✅ Cluster created
 
-Once the cluster is available, we will install the Tanzu Community Edition package repository. This will give us easy access to perform a managed install of software dependencies onto the cluster:
+You can verify that your cluster is accessible by running the following command to view namespaces in your cluster:
+```
+kubectl get ns
+```
 
-`tanzu package repository add tce-repo --url projects.registry.vmware.com/tce/main:0.9.1 --namespace tanzu-package-repo-global`
+[Back to Homepage](README.md)

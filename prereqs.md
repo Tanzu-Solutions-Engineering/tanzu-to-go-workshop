@@ -8,6 +8,8 @@ You will need Docker running on your system. If you need to install it, the foll
 * **Mac/Windows**: [Docker Desktop](https://www.docker.com/products/docker-desktop)
 * **Linux**: [Distro-Specific Install](https://www.docker.com/products/docker-desktop)
 
+You will also need a container registry where you are able to publish images. You can use a public registry like DockerHub or gcr.io, or use your own instance of a registry like Harbor or Artifactory.
+
 ### Package Manager
 
 You will need one of the following package managers to perform the install:
@@ -29,7 +31,7 @@ brew install kapp ytt vendir
 
 #### Windows
 
-You will want to download the CLI tools individually, and add them to your PATH:
+You will want to download the Carvel CLI tools individually, and add them to your PATH:
 
 **kapp**: https://github.com/vmware-tanzu/carvel-kapp/releases/download/v0.43.0/kapp-windows-amd64.exe <br>
 **ytt**: https://github.com/vmware-tanzu/carvel-ytt/releases/download/v0.38.0/ytt-windows-amd64.exe <br>
