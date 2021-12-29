@@ -19,6 +19,8 @@ cp config-REDACTED.yaml config.yaml
 
 Edit the file to provide the path and credentials for the docker registry you'll be using, as well as the OS and architecture for your local system. Have an instructor review the config.yaml file with you to avoid having to backtrack later.
 
+[Config File Reference](config-reference.md)
+
 ### Fetch Dependencies
 
 Execute the `download-dependencies.sh` script in this directory to get the correct dependencies for your system. In addition to Kubernetes software deployments, this script will retrieve CLI binaries and add them to the `bin` subdirectory. The downloaded binaries are:
@@ -33,4 +35,4 @@ You will need to add the ```bin``` subdirectory to your PATH  to access these co
 sudo cp bin/* /usr/local/bin
 ```
 
-[Back to Homepage](README.md)
+[Back to Homepage](../README.md)

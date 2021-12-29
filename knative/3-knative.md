@@ -1,24 +1,21 @@
 # Install Knative
-Before we get started, we need to install the Knative CLI.  Follow the instructions at https://knative.dev/docs/install/client/install-kn/.
 
-First, we will install Contour. For a personal computer install, we set Contour to use a ClusterIP endpoint because there will not be a LoadBalancer available:
-
+Run the installer script from the root directory of this repo:
 ```
-cd ../knative
-tanzu package install contour --package-name contour.community.tanzu.vmware.com --version 1.18.1 -f values-contour.yaml
+./install-knative.sh
 ```
 
-Whenever you want to access applications using Contour ingress, you will need a port forward to send localhost traffic to envoy. Execute the following command in a separate terminal session or tab:
+This script will install Contour as our ingress controller, and Knative as a serverless runtime. 
+
+For a personal computer install, we set Contour to use a ClusterIP endpoint because there will not be a LoadBalancer available. Whenever you want to access applications using Contour ingress, you will need a port forward to send localhost traffic to envoy. 
+
+Execute the following command in a separate terminal session or tab, and leave it running:
 
 ```
 kubectl port-forward svc/envoy 8080:80 -n projectcontour
 ```
 
-Now, we can install Knative. To simplify DNS we will set our Knative DNS Domain to 127-0-0-1.nip.io. This will automatically route requests to localhost, where your port forward will send them to Contour:
-
-```
-tanzu package install knative-serving --package-name knative-serving.community.tanzu.vmware.com --version 0.22.0 -f values-knative.yaml
-```
+To simplify DNS, we set our Knative DNS Domain to 127-0-0-1.nip.io. This will automatically route requests to localhost, where your port forward will send them to Contour:
 
 ### Validating the install
 

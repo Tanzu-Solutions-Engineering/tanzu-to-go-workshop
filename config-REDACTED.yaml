@@ -42,7 +42,6 @@ kpack:
   # - php
   languages: [java]
 
-# Vendir configuration
 vendir:
   # For installation of CLI binaries
   host:

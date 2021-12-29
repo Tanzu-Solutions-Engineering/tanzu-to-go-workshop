@@ -9,7 +9,7 @@
 [Overview](overview.md)<br>
 [Prerequisites](prereqs.md)
 
-[0. Download Dependencies](0-dependencies.md)<br>
+[0. Download Dependencies](dependencies/0-dependencies.md)<br>
 [1. Install Tanzu Community Edition](tce/1-tce.md)<br>
 [2. Install kpack](kpack/2-kpack.md)<br>
 [3. Install Knative](knative/3-knative.md)<br>
