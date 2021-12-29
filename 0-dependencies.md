@@ -4,7 +4,7 @@ To begin, we will configure and download the software dependencies we need. Clon
 
 ```
 git clone https://github.com/Tanzu-Solutions-Engineering/tanzu-to-go-workshop
-cd https://github.com/Tanzu-Solutions-Engineering/tanzu-to-go-workshop
+cd tanzu-to-go-workshop
 ```
 
 All further installation instructions will be executed from this directory

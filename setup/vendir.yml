@@ -117,7 +117,7 @@ directories:
       http:
         #@ if os == "darwin":
         url: #@ "https://storage.googleapis.com/tce-tanzu-cli-plugins/build-tools/standalone/mac/tanzu-standalone"
-        #@ else if os == "linux":
+        #@ elif os == "linux":
         url: #@ "https://storage.googleapis.com/tce-tanzu-cli-plugins/build-tools/standalone/linux/tanzu-standalone"
         #@ else:
         url: #@ "https://storage.googleapis.com/tce-tanzu-cli-plugins/build-tools/standalone/windows/tanzu-standalone.exe"

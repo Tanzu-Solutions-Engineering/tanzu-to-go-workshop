@@ -44,8 +44,10 @@ rmdir ${env:homepath}\.cache\tanzu
 ```
 
 ---
+
 **NOTE**
 If you are installing via WSL2 on Windows, you need to grab the Linux Binaries.
+
 ---
 
 ### Create your Kubernetes Cluster
@@ -72,4 +74,4 @@ You can verify that your cluster is accessible by running the following command 
 kubectl get ns
 ```
 
-[Back to Homepage](README.md)
+[Back to Homepage](../README.md)
