@@ -15,3 +15,5 @@ cp setup/vendir/binaries/kn/kn* bin/kn
 cp setup/vendir/binaries/kp/kp* bin/kp
 cp setup/vendir/binaries/yq/yq* bin/yq
 cp setup/vendir/binaries/kubectl/kubectl bin/kubectl
+
+chmod +x bin/*

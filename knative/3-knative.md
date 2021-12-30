@@ -30,3 +30,5 @@ When the service is available, you should be able to access it in your browser t
 ![Ingress Traffic](../images/port-forward.png)
 
 As long as the port-forward is running, requests to your browser will find their way to the ingress controller on your cluster, which in turn will forward them to your application.
+
+[Back to Homepage](../README.md)

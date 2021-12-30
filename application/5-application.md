@@ -27,3 +27,5 @@ kn service list
 Once the service is ready, you can access your application on port **8080** of the specified URL (Be sure your [port-forward](../knative/3-knative.md) is still running).
 
 Committing updates to the Git repo will trigger a new build and deploy of your application, allowing you to iterate.
+
+[Back to Homepage](../README.md)

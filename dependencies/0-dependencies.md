@@ -23,7 +23,13 @@ Edit the file to provide the path and credentials for the docker registry you'll
 
 ### Fetch Dependencies
 
-Execute the `download-dependencies.sh` script in this directory to get the correct dependencies for your system. In addition to Kubernetes software deployments, this script will retrieve CLI binaries and add them to the `bin` subdirectory. The downloaded binaries are:
+Execute the `download-dependencies.sh` script in the base directory to get the correct dependencies for your system:
+
+```
+./download-dependencies.sh
+```
+
+In addition to Kubernetes software deployments, this script will retrieve CLI binaries and add them to the `bin` subdirectory. The downloaded binaries are:
 * **kn** (Knative client)
 * **kp** (kpack client)
 * **kubectl** (Kubernetes client)
