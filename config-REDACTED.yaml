@@ -4,14 +4,13 @@ registry:
   username: 
   password: 
 
-service_account_name: default
-image_prefix: ellinj/demo-
+image_prefix: myrepo/demo-
 
 kpack:
   # credentials for the container registry you'll be using to store images
   builder:
     # path to the container repository where kpack build artifacts are stored
-    tag: ellinj/builder
+    tag: myrepo/builder
   # A comma-separated list of languages e.g. [java,nodejs] that will be supported for development
   # Allowed values are:
   # - java
@@ -34,12 +33,12 @@ vendir:
   versions:
     cartographer: 0.1.0-rc.1
     cert-manager: 1.5.3
-    flux2: 0.24.1
     kn: 1.1.0
     kp: 0.4.2
     kpack: 0.5.0
     kubectl: 1.23.1
     secretgen-controller: 0.6.0
+    source-controller: 0.19.2
     tce: 0.9.1
     yq: 4.16.1
 
@@ -51,5 +50,3 @@ domain:
   name: 127-0-0-1.nip.io
   type: real
 
-cartographer:
-  source_controller_version: 0.19.2

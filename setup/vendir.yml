@@ -57,16 +57,16 @@ directories:
               identifiers: [ "rc" ]
         assetNames: ["cartographer.yaml"]
         disableAutoChecksumValidation: true
-  - path: vendir/flux2
+  - path: vendir/source-controller
     contents:
-    - path: .
-      githubRelease:
-        slug: fluxcd/flux2
-        tagSelection:
-          semver:
-            constraints: #@ getVersion("flux2")
-        assetNames: ["install.yaml"]
-        disableAutoChecksumValidation: true
+      - path: .
+        githubRelease:
+          slug: fluxcd/source-controller
+          tagSelection:
+            semver:
+              constraints: #@ getVersion("source-controller")
+          assetNames: ["source-controller.crds.yaml","source-controller.deployment.yaml"]
+          disableAutoChecksumValidation: true
   - path: vendir/kpack
     contents:
     - path: .
