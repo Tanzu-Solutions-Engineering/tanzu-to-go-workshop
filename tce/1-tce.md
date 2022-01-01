@@ -54,7 +54,7 @@ If you are installing via WSL2 on Windows, you need to grab the Linux Binaries.
 
 Tanzu Community Edition allows you to create a local Kubernetes cluster that runs inside Docker, and supports easy installation of third-party [packages](https://tanzucommunityedition.io/packages/) to customize your environment.
 
-We recommend allocating 12GB of RAM and 8 CPUs to Docker, for your cluster. Let's create a cluster on your local system, and call it `tce`.
+Let's create a cluster on your local system, and call it `tce`.
 
 **Mac or Linux**
 ```
