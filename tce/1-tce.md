@@ -56,12 +56,6 @@ Tanzu Community Edition allows you to create a local Kubernetes cluster that run
 
 Let's create a cluster on your local system, and call it `tce`.
 
-**Mac or Linux**
-```
-tanzu standalone create tce
-```
-
-**Windows Powershell or WSL2:**
 ```
 tanzu standalone create tce --cni=calico
 ```
