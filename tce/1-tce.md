@@ -5,6 +5,7 @@ Use your system's package manager to install Tanzu Community Edition:
 **Mac/Linux:**
 ```
 brew install vmware-tanzu/tanzu/tanzu-community-edition
+{HOMEBREW-INSTALL-LOCATION}/configure-tce.sh
 ```
 
 When the brew install completes, it will give you the location of a post-install script to run: `{HOMEBREW-INSTALL-LOCATION}/configure-tce.sh`. Execute that script to complete the install
