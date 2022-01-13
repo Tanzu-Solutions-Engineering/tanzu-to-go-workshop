@@ -31,7 +31,7 @@ vendir:
   # getLatest overrides declared versions (disable using getLatest: "")
   getLatest: ""
   versions:
-    cartographer: 0.1.0-rc.1
+    cartographer: 0.1.0
     cert-manager: 1.5.3
     kn: 1.1.0
     kp: 0.4.2
