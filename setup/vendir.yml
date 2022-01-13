@@ -88,7 +88,11 @@ directories:
           semver:
             constraints: #@ getVersion("yq")
         assetNames:
-        - #@ "yq_" + os + "_" + arch
+          #@ if os == "windows":
+          - #@ "yq_" + os + "_" + arch + ".exe"
+          #@ else:
+          - #@ "yq_" + os + "_" + arch
+          #@ end
         disableAutoChecksumValidation: true
     - path: kn
       githubRelease:
@@ -99,7 +103,11 @@ directories:
         tag: #@ "knative-v" + getVersion("kn")
         #@ end
         assetNames:
-        - #@ "kn-" + os + "-" + arch
+          #@ if os == "windows":
+          - #@ "kn-" + os + "-" + arch + ".exe"
+          #@ else:
+          - #@ "kn-" + os + "-" + arch
+          #@ end
         disableAutoChecksumValidation: true
     - path: kp
       githubRelease:
@@ -112,7 +120,11 @@ directories:
         disableAutoChecksumValidation: true
     - path: kubectl
       http:
+        #@ if os == "windows":
+        url: #@ "https://dl.k8s.io/release/v" + getFixedVersion("kubectl") + "/bin/" + os + "/" + arch + "/kubectl.exe"
+        #@ else:
         url: #@ "https://dl.k8s.io/release/v" + getFixedVersion("kubectl") + "/bin/" + os + "/" + arch + "/kubectl"
+        #@ end
     - path: standalone
       http:
         #@ if os == "darwin":
