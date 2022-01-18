@@ -1,8 +1,15 @@
 # Install kpack
 
 Run the installer script from the root directory of this repo:
+
+Mac/Linux:
 ```
 ./install-kpack.sh
+```
+
+Windows:
+```
+.\install-kpack.ps1
 ```
 
 After the install, kpack will need a couple of minutes to publish some images to your registry before it is ready. You will know this process is complete when the ClusterStore and the Builder are in `Ready` status.

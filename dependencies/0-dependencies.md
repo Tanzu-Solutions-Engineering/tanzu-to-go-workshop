@@ -23,7 +23,7 @@ Edit the file to provide the path and credentials for the docker registry you'll
 
 ### Fetch Dependencies
 
-Execute the `download-dependencies.sh` script in the base directory to get the correct dependencies for your system:
+Execute the `download-dependencies` script in the base directory to get the correct dependencies for your system:
 
 Mac/Linux:
 ```
@@ -47,6 +47,8 @@ Mac/Linux:
 ```
 sudo cp bin/* /usr/local/bin
 ```
+
+For Windows users, the executables will be located in the $HOME\tce\bin and is appended to the current path for the terminal session after the `download-dependencies.ps1` script has been executed. The `set-env.ps1` script can be used in other sessions or after system restart to point to the executables downloaded in the script. The path can also be added to the system if you want to add them permanently.
 
 Windows:
 ```

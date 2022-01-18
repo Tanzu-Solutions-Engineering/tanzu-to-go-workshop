@@ -1,8 +1,15 @@
 # Install Knative
 
 Run the installer script from the root directory of this repo:
+
+Mac/Linux:
 ```
 ./install-knative.sh
+```
+
+Windows:
+```
+.\install-knative.ps1
 ```
 
 This script will install Contour as our ingress controller, and Knative as a serverless runtime. 

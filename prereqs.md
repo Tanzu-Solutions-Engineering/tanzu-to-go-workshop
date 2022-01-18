@@ -33,6 +33,8 @@ brew install kapp ytt vendir
 
 #### Windows
 
+A script `choco-nonadmin-install.ps1` has been included to provide a way to install choco without admin priviledges.
+
 You will want to download the Carvel CLI tools individually, and add them to your PATH:
 
 **kapp**: https://github.com/vmware-tanzu/carvel-kapp/releases/download/v0.43.0/kapp-windows-amd64.exe <br>
