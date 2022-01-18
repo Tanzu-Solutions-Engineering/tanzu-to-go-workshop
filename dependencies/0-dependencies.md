@@ -25,8 +25,14 @@ Edit the file to provide the path and credentials for the docker registry you'll
 
 Execute the `download-dependencies.sh` script in the base directory to get the correct dependencies for your system:
 
+Mac/Linux:
 ```
 ./download-dependencies.sh
+```
+
+Windows:
+```
+.\download-dependencies.ps1
 ```
 
 In addition to Kubernetes software deployments, this script will retrieve CLI binaries and add them to the `bin` subdirectory. The downloaded binaries are:
@@ -37,8 +43,14 @@ In addition to Kubernetes software deployments, this script will retrieve CLI bi
 
 You will need to add the ```bin``` subdirectory to your PATH  to access these commands. Alternative, you can copy these CLIs into your existing path. For example, on Mac/Linux, you can run
 
+Mac/Linux:
 ```
 sudo cp bin/* /usr/local/bin
+```
+
+Windows:
+```
+./set-env.ps1
 ```
 
 [Back to Homepage](../README.md)
