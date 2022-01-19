@@ -4,7 +4,7 @@ set -o nounset
 set -o pipefail
 
 # Download installation files
-#VENDIR_GITHUB_API_TOKEN=<your-github-token> \
+VENDIR_GITHUB_API_TOKEN="<your-github-token>" \
 ytt -f setup/vendir.yml \
   --data-values-file config.yaml \
   | vendir sync --chdir setup -f-
