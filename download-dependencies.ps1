@@ -1,5 +1,4 @@
-#VENDIR_GITHUB_API_TOKEN=<your-github-token> 
-$ENV:VENDIR_GITHUB_API_TOKEN = "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"
+$ENV:VENDIR_GITHUB_API_TOKEN = "<your-github-token>"
 
 # Download installation files
 ytt -f setup/vendir.yml --data-values-file config.yaml | vendir sync --chdir setup -f-
