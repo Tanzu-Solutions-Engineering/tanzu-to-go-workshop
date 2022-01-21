@@ -23,7 +23,9 @@ Edit the file to provide the path and credentials for the docker registry you'll
 
 ### Fetch Dependencies
 
-Execute the `download-dependencies` script in the base directory to get the correct dependencies for your system:
+Execute the `download-dependencies` script in the base directory to get the correct dependencies for your system.
+
+**Important.** Before you execute the script, you will need to edit it. There will be a placeholder string marked "<your-github-token>". You will need to replace this string. You can generate your own Github API token, or use one provided by the instructor.
 
 Mac/Linux:
 ```
