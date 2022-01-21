@@ -19,6 +19,9 @@ You will need one of the following package managers to perform the install:
 * **Mac/Linux**: [Homebrew](https://brew.sh/)
 * **Windows**: [Chocolatey](https://chocolatey.org/install)
 
+* Note: The standard installation of Chocolatey requires elevated permissions to install and run. A script `choco-nonadmin-install.ps1` has been included to provide a way to install and run the choco commands without admin priviledges.
+
+
 ### Carvel
 
 Carvel (https://carvel.dev/) is a set of open-source tools that greatly simplifies the task of configuring and deploying software to your Kubernetes cluster. We will be using the CLI tools **kapp**, **ytt**, and **vendir** for this workshop.
@@ -33,12 +36,20 @@ brew install kapp ytt vendir
 
 #### Windows
 
-A script `choco-nonadmin-install.ps1` has been included to provide a way to install choco without admin priviledges.
+Install the Carvel tools with Chocolatey:
 
-You will want to download the Carvel CLI tools individually, and add them to your PATH:
+```
+choco install kapp
+choco install ytt
+choco install vendir
+```
 
-**kapp**: https://github.com/vmware-tanzu/carvel-kapp/releases/download/v0.43.0/kapp-windows-amd64.exe <br>
-**ytt**: https://github.com/vmware-tanzu/carvel-ytt/releases/download/v0.38.0/ytt-windows-amd64.exe <br>
-**vendir**: https://github.com/vmware-tanzu/carvel-vendir/releases/download/v0.24.0/vendir-windows-amd64.exe
+Install the Carvel tools manually:
+
+You will need to download the Carvel CLI tools and rename them as well as add them to your PATH:
+
+**kapp.exe**: https://github.com/vmware-tanzu/carvel-kapp/releases/download/v0.43.0/kapp-windows-amd64.exe <br>
+**ytt.exe**: https://github.com/vmware-tanzu/carvel-ytt/releases/download/v0.38.0/ytt-windows-amd64.exe <br>
+**vendir.exe**: https://github.com/vmware-tanzu/carvel-vendir/releases/download/v0.24.0/vendir-windows-amd64.exe
 
 [Back to Homepage](README.md)
