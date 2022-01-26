@@ -1,0 +1,12 @@
+apiVersion: carto.run/v1alpha1
+kind: Workload
+metadata:
+  name: tanzu-dotnet-web-app
+  labels:
+    apps.tanzu.vmware.com/workload-type: web
+spec:
+  source:
+    git:
+      url: https://github.com/corn-pivotal/TBS-Demo-App
+      ref:
+        branch: main
