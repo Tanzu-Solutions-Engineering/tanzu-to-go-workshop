@@ -39,7 +39,7 @@ spec:
         name: image
       params:
         - name: image_prefix
-          value: registry.gcp.ellin.net/ttg/demo-
+          value: #@ data.values.image_prefix
       sources:
         - resource: source-provider
           name: source
