@@ -18,37 +18,6 @@ choco install tanzu-community-edition
 
 The `tanzu` command will be added to your `$PATH` variable automatically by Chocolatey.
 
-___
-
-### Install standalone plugin
-
-Execute the following commands to install the plugin for creating local clusters:
-
-**Mac:**
-```
-chmod +x ./setup/vendir/binaries/standalone/tanzu-standalone
-cp -v ./setup/vendir/binaries/standalone/tanzu-standalone ~/Library/Application\ Support/tanzu-cli/tanzu-plugin-standalone
-rm -rfv ~/.cache/tanzu
-```
-
-**Linux:**
-```
-chmod +x ./setup/vendir/binaries/standalone/tanzu-standalone
-cp -v ./setup/vendir/binaries/standalone/tanzu-standalone ~/.local/share/tanzu-cli/tanzu-plugin-standalone
-rm -rfv ~/.cache/tanzu
-```
-
-**Windows:**
-```
-cp -v ./setup/vendir/binaries/standalone/tanzu-standalone.exe ${env:localappdata}\tanzu-cli\tanzu-plugin-standalone.exe
-rmdir ${env:homepath}\.cache\tanzu
-```
-
----
-
-**NOTE**
-If you are installing via WSL2 on Windows, you need to grab the Linux Binaries.
-
 ---
 
 ### Create your Kubernetes Cluster
@@ -58,7 +27,7 @@ Tanzu Community Edition allows you to create a local Kubernetes cluster that run
 Let's create a cluster on your local system, and call it `tce`.
 
 ```
-tanzu standalone create tce --cni=calico
+tanzu unmanaged-cluster create tce --cni=calico
 ```
 
 You are ready to go when you see this message: <br>
