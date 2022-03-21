@@ -1,3 +1,5 @@
 config.yaml
 bin/
 setup/vendir/
+generated/
+setup/vendir.lock.yml

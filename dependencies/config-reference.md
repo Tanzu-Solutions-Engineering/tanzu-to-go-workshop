@@ -14,7 +14,6 @@ image_prefix: foo/demo-
 kpack:
   builder:
     tag: foo/builder
-  languages: [java]
 ```
 
 The dependencies script will retrieve the correct CLI binaries for your local system. It is important to be sure that the host and architecture are set correctly for your system:

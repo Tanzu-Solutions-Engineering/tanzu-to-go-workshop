@@ -17,7 +17,14 @@ choco install tanzu-community-edition
 ```
 
 The `tanzu` command will be added to your `$PATH` variable automatically by Chocolatey.
+---
+Update the Tanzu package library if necessary.
 
+Run
+
+```
+tanzu package repository list -A
+```
 ---
 
 ### Create your Kubernetes Cluster
