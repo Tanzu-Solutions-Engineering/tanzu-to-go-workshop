@@ -35,16 +35,6 @@ directories:
             constraints: #@ getVersion("secretgen-controller")
         assetNames: ["release.yml"]
         disableAutoChecksumValidation: true
-  - path: vendir/source-controller
-    contents:
-      - path: .
-        githubRelease:
-          slug: fluxcd/source-controller
-          tagSelection:
-            semver:
-              constraints: #@ getVersion("source-controller")
-          assetNames: ["source-controller.crds.yaml","source-controller.deployment.yaml"]
-          disableAutoChecksumValidation: true
   #! Binaries
   - path: vendir/binaries
     contents:

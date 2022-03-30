@@ -8,6 +8,7 @@ package:
   versions:
     cartographer: 0.2.2
     cert-manager: 1.6.1
+    flux: 0.21.2 
 
 image_prefix: myrepo/demo-
 
