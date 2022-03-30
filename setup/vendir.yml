@@ -25,16 +25,6 @@ kind: Config
 minimumRequiredVersion: 0.8.0
 directories:
   #! Product release files
-  - path: vendir/cert-manager
-    contents:
-    - path: .
-      githubRelease:
-        slug: jetstack/cert-manager
-        tagSelection:
-          semver:
-            constraints: #@ getVersion("cert-manager")
-        assetNames: [ "cert-manager.yaml" ]
-        disableAutoChecksumValidation: true
   - path: vendir/secretgen-controller
     contents:
     - path: .
@@ -44,18 +34,6 @@ directories:
           semver:
             constraints: #@ getVersion("secretgen-controller")
         assetNames: ["release.yml"]
-        disableAutoChecksumValidation: true
-  - path: vendir/cartographer
-    contents:
-    - path: .
-      githubRelease:
-        slug: vmware-tanzu/cartographer
-        tagSelection:
-          semver:
-            constraints: #@ getVersion("cartographer")
-            prereleases:
-              identifiers: [ "rc" ]
-        assetNames: ["cartographer.yaml"]
         disableAutoChecksumValidation: true
   - path: vendir/source-controller
     contents:
@@ -67,17 +45,6 @@ directories:
               constraints: #@ getVersion("source-controller")
           assetNames: ["source-controller.crds.yaml","source-controller.deployment.yaml"]
           disableAutoChecksumValidation: true
-  - path: vendir/kpack
-    contents:
-    - path: .
-      githubRelease:
-        slug: pivotal/kpack
-        tagSelection:
-          semver:
-            constraints: #@ getVersion("kpack")
-        assetNames:
-          - #@ "release-*.yaml"
-        disableAutoChecksumValidation: true
   #! Binaries
   - path: vendir/binaries
     contents:
@@ -125,27 +92,3 @@ directories:
         #@ else:
         url: #@ "https://dl.k8s.io/release/v" + getFixedVersion("kubectl") + "/bin/" + os + "/" + arch + "/kubectl"
         #@ end
-    - path: standalone
-      http:
-        #@ if os == "darwin":
-        url: #@ "https://storage.googleapis.com/tce-tanzu-cli-plugins/build-tools/standalone/mac/tanzu-standalone"
-        #@ elif os == "linux":
-        url: #@ "https://storage.googleapis.com/tce-tanzu-cli-plugins/build-tools/standalone/linux/tanzu-standalone"
-        #@ else:
-        url: #@ "https://storage.googleapis.com/tce-tanzu-cli-plugins/build-tools/standalone/windows/tanzu-standalone.exe"
-        #@ end
-
-  #! TCE
-#!  - path: vendir/binaries-tce
-#!    contents:
-#!    - path: .
-#!      githubRelease:
-#!        slug: vmware-tanzu/community-edition
-#!        tagSelection:
-#!          semver:
-#!            constraints: #@ getVersion("tce")
-#!        assetNames:
-#!          - #@ "tce-" + os + "-" + arch + "-v*.tar.gz"
-#!        disableAutoChecksumValidation: true
-#!        unpackArchive:
-#!          path: #@ "tce-" + os + "-" + arch + "-v*.tar.gz"
